@@ -6,7 +6,7 @@ class AbstractEmployee{
     virtual void AskForPromotion()=0;
 };
 class Employee:AbstractEmployee{
-private:
+protected:
     string Name;
     string Company;
     int Age;
@@ -53,10 +53,29 @@ public:
         }
     }
 };
-
+class Developer:public Employee{
+public:
+    string FavouriteLanguage;
+    Developer(string name, string company, int age,string favouriteLanguage) : Employee(name, company, age) {
+        FavouriteLanguage = favouriteLanguage;
+    }
+    void FixBug(){
+        cout<<Name<<" is fixing bugs using " << FavouriteLanguage<<endl;
+    }
+};
+class Teacher:public Employee{
+public:
+    string Subject;
+    Teacher(string name, string company, int age, string basicTopic) : Employee(name, company, age) {
+        Subject = basicTopic;
+    }
+    void FixBug(){
+        cout<<Name<<" is preparing " << Subject<<" lesson" <<endl;
+    }
+};
 int main() {
-    Employee employee1 = Employee("Peter","Poligon",25);
-    Employee employee2 = Employee("Eric","Ditrion",27);
+    Developer employee1 = Developer("Peter","Poligon",25,"C++");
+    Teacher employee2 = Teacher("Eric","Ditrion",27,"History");
     employee1.IntroduceYourSelf();
     employee2.IntroduceYourSelf();
     employee1.setName("Tom");
