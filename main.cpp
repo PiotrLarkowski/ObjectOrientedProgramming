@@ -52,6 +52,9 @@ public:
             cout<<Name<<" you can't get promotion"<<endl;
         }
     }
+    virtual void Work(){
+        cout<<Name<<" is checking email, task backlog, preforming tasks"<<endl;
+    }
 };
 class Developer:public Employee{
 public:
@@ -62,6 +65,9 @@ public:
     void FixBug(){
         cout<<Name<<" is fixing bugs using " << FavouriteLanguage<<endl;
     }
+    void Work(){
+        cout<<Name<<" writing code in "<< FavouriteLanguage <<endl;
+    }
 };
 class Teacher:public Employee{
 public:
@@ -69,8 +75,8 @@ public:
     Teacher(string name, string company, int age, string basicTopic) : Employee(name, company, age) {
         Subject = basicTopic;
     }
-    void FixBug(){
-        cout<<Name<<" is preparing " << Subject<<" lesson" <<endl;
+    void Work(){
+        cout<<Name<<" is teaching "<< Subject <<endl;
     }
 };
 int main() {
@@ -84,8 +90,21 @@ int main() {
     cout<<employee1.getName() <<" is " << employee1.getAge() << " years old";
     employee1.setAge(15);
     employee1.IntroduceYourSelf();
+    employee1.FixBug();
+    employee1.FixBug();
+    employee1.FixBug();
     employee1.AskForPromotion();
     employee2.AskForPromotion();
+
+    employee1.Work();
+    employee2.Work();
+
+    Employee *e1 = &employee1;
+    Employee *e2 = &employee2;
+
+    e1->Work();
+    e2->Work();
+
     system("pause>0");
     return 0;
 }
