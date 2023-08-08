@@ -2,7 +2,10 @@
 using namespace std;
 using std::string;
 
-class Employee{
+class AbstractEmployee{
+    virtual void AskForPromotion()=0;
+};
+class Employee:AbstractEmployee{
 private:
     string Name;
     string Company;
@@ -42,6 +45,13 @@ public:
             Age = age;
         }
     }
+    void AskForPromotion(){
+        if(Age>30){
+            cout<<Name<<" you got promotion"<<endl;
+        }else{
+            cout<<Name<<" you can't get promotion"<<endl;
+        }
+    }
 };
 
 int main() {
@@ -55,6 +65,8 @@ int main() {
     cout<<employee1.getName() <<" is " << employee1.getAge() << " years old";
     employee1.setAge(15);
     employee1.IntroduceYourSelf();
+    employee1.AskForPromotion();
+    employee2.AskForPromotion();
     system("pause>0");
     return 0;
 }
